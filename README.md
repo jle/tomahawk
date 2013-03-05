@@ -11,9 +11,9 @@ The `core` library requires Android SDK 8 (Gingerbread) and higher. The `example
 Installation
 ------------
 
-``$ android update lib-project -p core``
-``$ android update project -p example``
-``$ cd example && ant clean debug install``
+    $ android update lib-project -p core
+    $ android update project -p example
+    $ cd example && ant clean debug install
 
 License
 -------
