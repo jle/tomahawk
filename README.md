@@ -1,4 +1,9 @@
-filter-library
-==============
+Tomahawk
+========
 
-A photo filters library for Android
+A bitmap manipulation library for Android.
+
+License
+-------
+
+Apache License, Version 2.0
