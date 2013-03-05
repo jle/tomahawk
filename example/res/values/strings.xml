@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Filters</string>
+    <string name="no_filter">Original</string>
+    <string name="rose_filter">Rose</string>
+    <string name="chill_filter">Chill</string>
+    <string name="bw_filter">B&amp;W</string>
+</resources>

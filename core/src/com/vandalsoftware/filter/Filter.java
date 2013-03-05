@@ -10,5 +10,5 @@ public class Filter {
     private Filter() {
     }
 
-    public static native void filterBitmap(Bitmap bitmap, long time_ms);
+    public static native void filterBW(Bitmap bitmap);
 }

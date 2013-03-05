@@ -32,7 +32,9 @@
 /* Set to 1 to enable debug log traces. */
 #define DEBUG 0
 
-static void filter_bw( AndroidBitmapInfo * info, void* pixels)
+typedef void (*filterfunc_t)(AndroidBitmapInfo*, void*);
+
+static void filter_bw(AndroidBitmapInfo* info, void* pixels)
 {
     int row;
     for (row = 0; row < info->height; row++) {
@@ -54,7 +56,8 @@ static void filter_bw( AndroidBitmapInfo * info, void* pixels)
     }
 }
 
-JNIEXPORT void JNICALL Java_com_vandalsoftware_filter_Filter_filterBitmap(JNIEnv * env, jobject  obj, jobject bitmap,  jlong  time_ms)
+static void filter_bitmap(JNIEnv* env, jobject obj, jobject bitmap,
+    filterfunc_t func)
 {
     AndroidBitmapInfo info;
     int ret;
@@ -75,7 +78,13 @@ JNIEXPORT void JNICALL Java_com_vandalsoftware_filter_Filter_filterBitmap(JNIEnv
         LOGE("AndroidBitmap_lockPixels() failed ! error=%d", ret);
     }
 
-    filter_bw(&info, pixels);
+    (*func)(&info, pixels);
 
     AndroidBitmap_unlockPixels(env, bitmap);
+}
+
+JNIEXPORT void JNICALL Java_com_vandalsoftware_filter_Filter_filterBW
+    (JNIEnv* env, jobject obj, jobject bitmap)
+{
+    filter_bitmap(env, obj, bitmap, &filter_bw);
 }
