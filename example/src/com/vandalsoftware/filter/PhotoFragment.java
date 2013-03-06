@@ -55,6 +55,14 @@ public class PhotoFragment extends Fragment {
 
             final Bitmap bm = BitmapFactory.decodeStream(is, null, opts);
             switch (mFilter) {
+                case FILTER_CHILL: {
+                    Filter.tintBlue(bm, 1);
+                    break;
+                }
+                case FILTER_ROSE: {
+                    Filter.tintRed(bm, .75f);
+                    break;
+                }
                 case FILTER_BW: {
                     Filter.filterBW(bm);
                     break;
