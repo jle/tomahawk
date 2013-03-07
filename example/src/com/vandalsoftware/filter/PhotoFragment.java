@@ -24,6 +24,7 @@ public class PhotoFragment extends Fragment {
     public static final int FILTER_CHILL = 1;
     public static final int FILTER_ROSE = 2;
     public static final int FILTER_BW = 3;
+    public static final int FILTER_INVERT = 4;
     private int mFilter;
 
     public PhotoFragment() {
@@ -65,6 +66,10 @@ public class PhotoFragment extends Fragment {
                 }
                 case FILTER_BW: {
                     Filter.filterBW(bm);
+                    break;
+                }
+                case FILTER_INVERT: {
+                    Filter.invert(bm);
                     break;
                 }
             }

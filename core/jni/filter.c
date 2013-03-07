@@ -44,10 +44,11 @@
 
 typedef uint8_t Filter;
 
-#define NONE  0
-#define ROSE  1
-#define WEIRD 2
-#define CHILL 3
+#define NONE   0
+#define ROSE   1
+#define WEIRD  2
+#define CHILL  3
+#define INVERT 4
 
 static uint8_t calcY(uint8_t r, uint8_t g, uint8_t b)
 {
@@ -83,6 +84,12 @@ static void do_filter(AndroidBitmapInfo* info, void* pixels,
                 {
                     uint8_t tint = (b - lum) * intensity;
                     line[col] = a | (r << 16) | (g << 8) | tint;
+                    break;
+                }
+                case INVERT:
+                {
+                    line[col] = a | ((255 - r) << 16) | ((255 - g) << 8) |
+                        (255 - b);
                     break;
                 }
                 default:
@@ -148,4 +155,10 @@ JNIEXPORT void JNICALL Java_com_vandalsoftware_filter_Filter_tintRed
     (JNIEnv* env, jobject obj, jobject bitmap, jfloat intensity)
 {
     filter_bitmap(env, obj, bitmap, intensity, ROSE);
+}
+
+JNIEXPORT void JNICALL Java_com_vandalsoftware_filter_Filter_invert
+    (JNIEnv* env, jobject obj, jobject bitmap)
+{
+    filter_bitmap(env, obj, bitmap, 0, INVERT);
 }

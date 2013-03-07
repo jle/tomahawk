@@ -5,4 +5,5 @@
     <string name="rose_filter">Rose</string>
     <string name="chill_filter">Chill</string>
     <string name="bw_filter">B&amp;W</string>
+    <string name="invert_filter">Negative</string>
 </resources>

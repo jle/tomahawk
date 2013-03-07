@@ -13,4 +13,5 @@ public class Filter {
     public static native void filterBW(Bitmap bitmap);
     public static native void tintBlue(Bitmap bitmap, float intensity);
     public static native void tintRed(Bitmap bitmap, float intensity);
+    public static native void invert(Bitmap bitmap);
 }

@@ -68,6 +68,11 @@ public class PhotoPagerActivity extends Activity {
         tabsAdapter.addTab(bar.newTab().setText(R.string.rose_filter),
                 PhotoFragment.class, bundle);
 
+        bundle = new Bundle();
+        bundle.putInt(PhotoFragment.ARG_FILTER, PhotoFragment.FILTER_INVERT);
+        tabsAdapter.addTab(bar.newTab().setText(R.string.invert_filter),
+                PhotoFragment.class, bundle);
+
         if (savedInstanceState != null) {
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
         }
